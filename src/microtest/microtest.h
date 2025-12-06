@@ -16,6 +16,7 @@
 #include <string>
 #include <iostream>
 #include <algorithm>
+#include <exception>
 
 ////////////////
 // Assertions //
@@ -63,6 +64,17 @@
     std::cout << "Actual values: " << a << " == " << b << std::endl;\
   }\
   ASSERT(a != b);
+
+#define ASSERT_THROW(a...)\
+  bool caught = true;\
+  try {\
+    a;\
+    caught = false;\
+  } catch (const std::exception &e) { }\
+  if (!caught) {\
+    printf("%s{    info} %s", mt::yellow(), mt::def());\
+    throw mt::AssertFailedException("No expected exception thrown! ", __FILE__, __LINE__);\
+  }\
 
 
 ////////////////

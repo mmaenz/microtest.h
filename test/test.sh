@@ -32,6 +32,10 @@ expectFailure "Argument Test 1"
 bin/argument_tests 100 >> /dev/null 2> /dev/null
 expectSuccess "Argument Test 2"
 
+# Run Throw Test: Expect Success
+bin/throw_test >> /dev/null 2> /dev/null
+expectSuccess "Throw Test"
+
 # Run memory leak checks
 echo ""
 echo "Checking for memory leaks..."
