@@ -27,6 +27,8 @@ TEST(ExampleSucceedingTest) {
   delete x;
 
   ASSERT_STREQ("abc", "abc");
+
+  ASSERT_THROW(throw std::exception())
 }
 
 TEST(ExampleFailingTest) {
